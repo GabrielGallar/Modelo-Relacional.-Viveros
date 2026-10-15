@@ -374,3 +374,73 @@ alter table public.pedido add cliente int4 not null;
 
 alter table public.pedido alter column cliente set
 storage PLAIN;
+
+insert into public.vivero (latitud, longitud) values
+	(28.463600, -16.251800),
+	(28.485900, -16.314200),
+	(28.414800, -16.547700),
+	(28.050900, -16.718400),
+	(28.354400, -16.370400);
+
+insert into public.producto (tipo) values
+	('Tajinaste rojo'),
+	('Drago'),
+	('Cactus'),
+	('Orquídea'),
+	('Planta aromática');
+
+insert into public.cliente (nombre, apellido, fecha_suscripcion) values
+	('Laura', 'Pérez', '2024-01-15'),
+	('Carlos', 'Rodríguez', '2024-03-02'),
+	('Marta', 'González', '2024-06-20'),
+	('Javier', 'Hernández', null),
+	('Elena', 'Díaz', '2025-02-10');
+
+insert into public.empleado (nombre, apellido1, apellido2) values
+	('Ana', 'García', 'López'),
+	('Luis', 'Martín', 'Santana'),
+	('Sofía', 'Rodríguez', 'Pérez'),
+	('Pedro', 'Cabrera', null),
+	('Lucía', 'Torres', 'Delgado');
+
+insert into public.tarea (tipo) values
+	('Riego'),
+	('Poda'),
+	('Trasplante'),
+	('Fertilizado'),
+	('Atención al cliente');
+
+insert into public.zona (vivero, tipo, latitud, longitud) values
+	(1, 'Invernadero', 28.463700, -16.251900),
+	(1, 'Exterior',    28.463500, -16.251700),
+	(2, 'Semillero',   28.486000, -16.314300),
+	(3, 'Almacén',     28.414900, -16.547800),
+	(4, 'Zona de venta', 28.051000, -16.718500);
+
+insert into public.producto_en_zona (producto, zona, cantidad) values
+	(1, 1, 120),
+	(2, 2, 45),
+	(3, 3, 300),
+	(4, 1, 60),
+	(5, 5, 0);
+
+insert into public.pedido (responsable, cliente, fecha, tipo) values
+	(1, 1, '2025-09-01', 'Online'),
+	(2, 2, '2025-09-05', 'Presencial'),
+	(3, 3, '2025-09-12', 'Online'),
+	(1, 4, '2025-10-01', 'Telefónico'),
+	(5, 5, '2025-10-10', 'Presencial');
+
+insert into public.bonificacion (cliente, mes, volumen_compra, importe) values
+	(1, '2025-09-01', 250.00, 12.50),
+	(2, '2025-09-01', 480.75, 24.04),
+	(3, '2025-09-01', 100.00, 0.00),
+	(1, '2025-10-01', 320.50, 16.03),
+	(5, '2025-10-01', 90.00, 0.00);
+
+insert into public.cargo (empleado, tarea, zona, fecha_inicio, fecha_fin) values
+	(1, 1, 1, '2025-01-01', '2025-06-30'),
+	(2, 2, 2, '2025-02-15', null),
+	(3, 3, 3, '2025-03-01', '2025-12-31'),
+	(4, 4, 4, '2025-04-10', null),
+	(5, 5, 5, '2025-05-01', '2025-09-30');
